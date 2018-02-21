@@ -20,7 +20,7 @@ it('calls request and success actions if the fetch response was successful', () 
     window.fetch = jest.fn().mockImplementation(() =>
         Promise.resolve(mockResponse(200, null, '{"london":"hot"}')));
 
-    const store = mockStore()
+    const store = mockStore({weather: {}})
 
     return store.dispatch(getForecast())
         .then((forecast) => {
