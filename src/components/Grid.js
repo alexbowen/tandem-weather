@@ -12,7 +12,7 @@ const Grid = ({ forecast }) => (
             </div>
             {day.map(interval =>
             <div key={interval.dt} className="col-3 col-md">
-                <Cell time={interval.dt_txt} temperature={interval.main.temp} />
+                <Cell time={interval.dt_txt} temperature={interval.main.temp} weather={interval.weather[0]} />
             </div>
             )}
         </div>
