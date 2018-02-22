@@ -5,10 +5,18 @@ exports[`Cell component 1`] = `
   className="forecast-cell"
 >
   <span>
-    Invalid Date
+    <img
+      alt="hot"
+      height="50px"
+      src="http://openweathermap.org/img/w/.png"
+      width="50px"
+    />
   </span>
   <span>
-    NaN
+    12:00 AM
+  </span>
+  <span>
+    2
     °C
   </span>
 </div>

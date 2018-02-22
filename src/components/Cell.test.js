@@ -6,7 +6,7 @@ import renderer from 'react-test-renderer'
 test('Cell component', () => {
 
     const component = renderer.create(
-        <Cell messages={{time:"2018-02-22 00:00:00", temperature: 274.72}} />
+        <Cell time="2018-02-22 00:00:00" temperature={274.72}  weather={{icon: '', description: 'hot'}} />
     )
 
     let tree = component.toJSON()
