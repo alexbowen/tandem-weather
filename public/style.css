@@ -1,0 +1,22 @@
+.data-grid {
+    margin:1em 0;
+}
+
+.data-grid .row {
+    background-color: #dddddd;
+    margin:0.2em;
+    padding:0.2em;
+}
+
+.data-grid span {
+    display:block;
+}
+
+.data-grid .forecast-gell span {
+    font-size: 0.8em;
+    text-align:center;
+}
+
+.user-message {
+    margin:1em 0
+}
