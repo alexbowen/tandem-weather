@@ -3,8 +3,9 @@ import { splitDatasetArray } from './helpers/gridData'
 import { getDate } from './helpers/displayUtils'
 import Cell from './Cell'
 
-const Grid = ({ forecast }) => (
+const Grid = ({ forecast, location }) => (
     <div className="data-grid">
+        <h2>{`Results for ${location}`}</h2>
         {splitDatasetArray(forecast, 5).map((day, index) =>
         <div key={index} className="row">
             <div className="col-12 col-md-2">
