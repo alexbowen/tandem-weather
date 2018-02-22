@@ -1,14 +1,25 @@
-export const splitDatasetArray = (dataArray, numberOfRows) => {
+/**
+ * @param {Array} data
+ * @param {Integer} rows 
+ */
+export const splitDatasetArray = (data, rows) => {
     
-    if (!Array.isArray(dataArray)) {
+    if (!Array.isArray(data)) {
         return false
     }
 
-    if (!Number.isInteger(numberOfRows) || typeof numberOfRows !== 'number') {
-        return dataArray
+    if (!Number.isInteger(rows) || typeof rows !== 'number') {
+        return data
     }
 
-    return Array.from(Array(numberOfRows).keys(), row => {
-        return dataArray.slice(row * (dataArray.length / numberOfRows), (row + 1) * (dataArray.length / numberOfRows))
+    return Array.from(Array(rows).keys(), row => {
+        const itemsPerRow = numberOfItemsPerRow(data, rows)
+        return data.slice(row * itemsPerRow, (row + 1) * itemsPerRow)
     })
 }
+
+/**
+ * @param {Array} items 
+ * @param {Integer} numberOfRows 
+ */
+const numberOfItemsPerRow = (items, numberOfRows) => items.length / numberOfRows
