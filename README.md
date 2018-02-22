@@ -1,6 +1,6 @@
 # Tandem technical challenge
 
-![home page](https://raw.githubusercontent.com/alexbowen/tandem-weather/blob/master/application.png)
+![home page](https://raw.githubusercontent.com/alexbowen/tandem-weather/master/application.png)
 
 This application uses the http://openweathermap.org/ API to display 3hourly weather infomation for a UK city for the next 5 days.
 
@@ -33,7 +33,7 @@ The container/component react/redux pattern is used. Containers have their state
 
 Some basic error handling is added to the main API call that then displays an erro state to the user if there is a problem. Its a fairly crude implementation but just to demonstrate i have considred error handling.
 
-![home page](https://raw.githubusercontent.com/alexbowen/tandem-weather/blob/master/error-state.png)
+![home page](https://raw.githubusercontent.com/alexbowen/tandem-weather/master/error-state.png)
 
 I would add a 'loading' state with an indicator to the content area area when requests are made and removed when resolved with more time.
 
