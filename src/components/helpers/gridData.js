@@ -3,7 +3,6 @@
  * @param {Integer} rows 
  */
 export const splitDatasetArray = (data, rows) => {
-    
     if (!Array.isArray(data)) {
         return false
     }

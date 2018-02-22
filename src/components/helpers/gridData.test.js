@@ -1,6 +1,6 @@
 import { splitDatasetArray } from './gridData'
 
-describe.only('Grid dataset helper functions', () => {
+describe('Grid dataset helper functions', () => {
 
     let data
 

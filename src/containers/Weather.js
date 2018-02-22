@@ -32,7 +32,7 @@ class WeatherContainer extends Component {
 }
 
 const mapStateToProps = state => {
-    const { forecast, dataFormat, location } = state
+    const { forecast, dataFormat, location } = state.weather
 
     return {
         forecast,

@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 const MessagesContainer = ({messages}) => (
-  <section>
+  <div>
       {messages.map((message, index) =>
-        <div key={index} className={`alert alert-${message.type}`}>{message.text}</div>
+        <div key={index} className={`user-message alert alert-${message.type}`}>{message.text}</div>
       )}
-  </section>
+  </div>
 )
 
 MessagesContainer.PropTypes = {

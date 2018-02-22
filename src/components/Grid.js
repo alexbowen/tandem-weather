@@ -1,65 +1,22 @@
 import React from 'react'
+import { splitDatasetArray } from './helpers/gridData'
+import { getDate } from './helpers/displayUtils'
+import Cell from './Cell'
 
-const Grid = () => (
-    <div>
-        <div className="row">
-            <div className="col-12 col-md-4">
-            date 1
+const Grid = ({ forecast }) => (
+    <div className="data-grid">
+        {splitDatasetArray(forecast, 5).map((day, index) =>
+        <div key={index} className="row">
+            <div className="col-12 col-md-2">
+                <span>{getDate(day[0].dt_txt)}</span>
             </div>
-            <div className="col-3 col-md">
-            20c
+            {day.map(interval =>
+            <div key={interval.dt} className="col-3 col-md">
+                <Cell time={interval.dt_txt} temperature={interval.main.temp} />
             </div>
-            <div className="col-3 col-md">
-            20c
-            </div>
-            <div className="col-3 col-md">
-            20c
-            </div>
-            <div className="col-3 col-md">
-            20c
-            </div>
-            <div className="col-3 col-md">
-            20c
-            </div>
-            <div className="col-3 col-md">
-            20c
-            </div>
-            <div className="col-3 col-md">
-            20c
-            </div>
-            <div className="col-3 col-md">
-            20c
-            </div>
+            )}
         </div>
-        <div className="row">
-            <div className="col-12 col-md-4">
-            date 2
-            </div>
-            <div className="col-3 col-md">
-            15c
-            </div>
-            <div className="col-3 col-md">
-            15c
-            </div>
-            <div className="col-3 col-md">
-            15c
-            </div>
-            <div className="col-3 col-md">
-            15c
-            </div>
-            <div className="col-3 col-md">
-            15c
-            </div>
-            <div className="col-3 col-md">
-            15c
-            </div>
-            <div className="col-3 col-md">
-            15c
-            </div>
-            <div className="col-3 col-md">
-            15c
-            </div>
-        </div>
+        )}
     </div>
 )
 

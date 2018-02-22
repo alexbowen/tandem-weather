@@ -26,16 +26,19 @@ export const updateSelected = selected => {
 const API_KEY = '56664e8f64055096a12f788307109538'
 
 export const getForecast = () => {
+
     return (dispatch, getState) => {
+
         const { location } = getState().weather
         dispatch(weatherRequest())
+
         return fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${location}&APPID=${API_KEY}`)
             .then(response => response.json())
             .then(json => dispatch(weatherSuccess(json)))
             .catch(error => {
                 dispatch(addMessage({
                     type: 'danger',
-                    text: 'Cannot connect to weather API'
+                    text: 'Error with weather API request'
                 }))
             })
     }
