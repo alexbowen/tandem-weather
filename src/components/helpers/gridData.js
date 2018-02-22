@@ -1,5 +1,5 @@
 export const splitDatasetArray = (dataArray, numberOfRows) => {
-
+    
     if (!Array.isArray(dataArray)) {
         return false
     }
@@ -8,5 +8,7 @@ export const splitDatasetArray = (dataArray, numberOfRows) => {
         return dataArray
     }
 
-    return []
+    return Array.from(Array(numberOfRows).keys(), row => {
+        return dataArray.slice(row * (dataArray.length / numberOfRows), (row + 1) * (dataArray.length / numberOfRows))
+    })
 }
