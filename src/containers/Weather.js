@@ -25,6 +25,7 @@ class WeatherContainer extends Component {
                 <button className="btn btn-success" onClick={this.props.fetchData}>
                     Get 5 day forecast
                 </button>
+                {this.props.forecast ? <h2>{`Results for ${this.props.forecast.city.name}`}</h2> : ''}
                 {this.props.forecast ? <Grid forecast={this.props.forecast.list} /> : ''}
             </div>
         )
