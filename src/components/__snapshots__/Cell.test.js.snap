@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cell component 1`] = `
+<div
+  className="forecast-cell"
+>
+  <span>
+    Invalid Date
+  </span>
+  <span>
+    NaN
+    °C
+  </span>
+</div>
+`;
