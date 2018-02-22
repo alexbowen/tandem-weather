@@ -10,9 +10,11 @@ The application is a client side React application (no server side HTML construc
 
 I spent 3-4 hours on developing this but in that time frame I did not get the time to implement the requirement of the CSV data source. I would be totally willing to discuss how this could be implemeted in any discussions.
 
+I used create-react-app (see below) for some initial boilerplate to save some time.
+
 ## Instructions to run the application
 
-Please install NPM dependencies with `npm i` from the project root. This application was developed using node 8.9.0 and is untested on other versions.
+Please install NPM dependencies with `npm i` from the project root. This application was developed using node 8.9.0 and is untested on other versions. I have only developed and tested this using Chrome browser.
 
 Now start the main application
 
@@ -23,11 +25,9 @@ In development mode all actions and corresponding states created are logged in t
 
 ## Discussion points
 
-I used create-react-app (see below) for some initial boilerplate to save some time.
-
 ### Architecture
 
-The container/component react/redux pattern is used. Containers have their state mapped to the redux store and components are stateless. redux-thunk is used to manage asynchronous calls to the API. I would probably refine the container/componet architecture as i took some shortcuts here - the controls for selecting city/data source i would probably absract in a seperate container for instance
+The container/component react/redux pattern is used. Containers have their state mapped to the redux store and components are stateless. redux-thunk is used to manage asynchronous calls to the API. I would probably refine the container/componet architecture as i took some shortcuts here - the controls for selecting city/data source i would probably absract in a seperate container for instance.
 
 ### Error handling
 
@@ -39,6 +39,8 @@ I would add a 'loading' state with an indicator to the content area area when re
 
 ### Testing
 
+`npm test`
+
 I have included unit tests for the actions of an API call, and some of the helpers I have implemented. These are intende for demonsatration and coverage would need to be greater in a real life application.
 
 I have also included a demonstration of a simple component snapshot test.
@@ -47,9 +49,11 @@ The above tests are implemented using the Jest tool.
 
 Some examples of internal propType checks have been added, although these need to be added to all components if more time spent on this.
 
-### Considerations
+### Considerations/TODO
 
 - As mentioned there is some very basic responsive styling. This kind of application is ideally suited to being a Progressive web application and this would greatly enhange the user experience on smaller devices/bad connections.
+- Would be nice to try out async/await in the redux API action.
+- The request to the API should really be made via some kind of proxy api server as there is an API key harcoded which would certainly be a more serious security consideration if API calls were made that access any kind of personal/sensitive data.
 
 ### Production
 
