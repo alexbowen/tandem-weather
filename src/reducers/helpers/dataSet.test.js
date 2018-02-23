@@ -20,6 +20,6 @@ describe('Dataset', () => {
 
     it('should pad forecast array with empty elements that fall out side forecast period', () => {
         const boundryFn = (value) => new Date(value.dt_txt).getHours() === 0
-        expect(pad({...dataSet}, boundryFn)).toEqual([null, null, null, null, null].concat(dataSet.list).concat([null, null, null]))
+        expect(pad(dataSet.list, dataSet.interval, boundryFn)).toEqual([null, null, null, null, null].concat(dataSet.list).concat([null, null, null]))
     })
 })
