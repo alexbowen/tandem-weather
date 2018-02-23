@@ -8,7 +8,10 @@ const defaultState = {
 const weather = (state = defaultState, action) => {
     switch (action.type) {
         case WEATHER_REQUEST:
-            return state
+            return {
+                ...state,
+                interval: action.interval
+            }
 
         case WEATHER_SUCCESS:
             return {
