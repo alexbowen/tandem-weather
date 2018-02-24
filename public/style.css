@@ -3,16 +3,18 @@
 }
 
 .data-grid .row {
-    background-color: #dddddd;
-    margin:0.2em;
+    background-color: #cccccc;
+    margin:0.4em 0;
     padding:0.2em;
 }
 
-.data-grid span {
-    display:block;
+.data-grid .forecast-cell {
+    background-color: #efefef;
+    margin:0.2em 0;
 }
 
 .data-grid .forecast-cell span {
+    display:block;
     font-size: 0.8em;
     text-align:center;
 }

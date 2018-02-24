@@ -5,6 +5,7 @@ import Select from '../components/Select'
 import { locations, formats } from '../data/selectBoxes'
 import Grid from '../components/Grid'
 import { getForecast, updateSelected } from '../actions/weather'
+import api from '../data/api'
 
 class WeatherContainer extends Component {
     render() {
@@ -25,7 +26,13 @@ class WeatherContainer extends Component {
                 <button className="btn btn-success" onClick={this.props.fetchData}>
                     Get 5 day forecast
                 </button>
-                {this.props.forecast ? <Grid forecast={this.props.forecast.list} location={this.props.forecast.city.name} /> : ''}
+                {this.props.forecast ?
+                <Grid
+                    forecast={this.props.forecast.list}
+                    location={this.props.forecast.city.name}
+                    columns={api.interval} 
+                />
+                : ''}
             </div>
         )
     }

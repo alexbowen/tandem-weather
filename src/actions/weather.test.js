@@ -29,7 +29,7 @@ describe('Weather API actions', () => {
             .then((forecast) => {
                 const expectedActions = store.getActions()
                 expect(expectedActions.length).toBe(2)
-                expect(expectedActions).toContainEqual({ type: WEATHER_REQUEST })
+                expect(expectedActions).toContainEqual({ type: WEATHER_REQUEST, interval: 8 })
                 expect(expectedActions).toContainEqual({ type: WEATHER_SUCCESS, forecast: { "london": "hot" } })
             })
     })
@@ -43,7 +43,7 @@ describe('Weather API actions', () => {
             .then((forecast) => {
                 const expectedActions = store.getActions()
                 expect(expectedActions.length).toBe(2)
-                expect(expectedActions).toContainEqual({ type: WEATHER_REQUEST })
+                expect(expectedActions).toContainEqual({ type: WEATHER_REQUEST, interval:8 })
                 /**
                  * ADD_MESSAGE isnt mocked and it could/should be, but actually some
                  * refactoring needed as the catch block in the action should dispatch
