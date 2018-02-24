@@ -9,6 +9,7 @@
 }
 
 .data-grid .forecast-cell {
+    background-color: #efefef;
     margin:0.2em 0;
 }
 
@@ -16,14 +17,6 @@
     display:block;
     font-size: 0.8em;
     text-align:center;
-}
-
-.forecast-cell--data {
-    background-color: #efefef;
-}
-
-.forecast-cell--empty {
-    background-color: #dddddd;
 }
 
 .user-message {

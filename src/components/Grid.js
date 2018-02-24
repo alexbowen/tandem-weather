@@ -13,10 +13,9 @@ const Grid = ({ forecast, location, columns }) => (
             </div>
             {day.map((interval, index) =>
             <div key={index} className="col-3 col-lg">
-            {day
-                ? <Cell time={interval.dt_txt} temperature={interval.main.temp} weather={interval.weather[0]} />
-                : <div className="forecast-cell forecast-cell--empty"></div>
-            }
+            {interval ?
+            <Cell time={interval.dt_txt} temperature={interval.main.temp} weather={interval.weather[0]} />
+            : ''}
             </div>
             )}
         </div>
