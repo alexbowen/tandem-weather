@@ -1,9 +1,7 @@
 import { getForecast } from './weather';
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import { WEATHER_REQUEST, WEATHER_SUCCESS } from './weather'
-//see comment below
-import { ADD_MESSAGE } from './messages'
+import { WEATHER_REQUEST, WEATHER_SUCCESS, WEATHER_ERROR } from './weather'
 
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
@@ -44,12 +42,7 @@ describe('Weather API actions', () => {
                 const expectedActions = store.getActions()
                 expect(expectedActions.length).toBe(2)
                 expect(expectedActions).toContainEqual({ type: WEATHER_REQUEST, interval:8 })
-                /**
-                 * ADD_MESSAGE isnt mocked and it could/should be, but actually some
-                 * refactoring needed as the catch block in the action should dispatch
-                 * a WEATHER_ERROR action and the message should be handled elsewhere
-                 */
-                expect(expectedActions).toContainEqual({ type: ADD_MESSAGE, 'message' : {
+                expect(expectedActions).toContainEqual({ type: WEATHER_ERROR, 'error' : {
                     type: 'danger',
                     text: 'Error with weather API request'
                 }})

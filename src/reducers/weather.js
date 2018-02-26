@@ -1,9 +1,10 @@
-import { WEATHER_REQUEST, WEATHER_SUCCESS, SELECTED_UPDATE } from '../actions/weather'
+import { WEATHER_REQUEST, WEATHER_SUCCESS, WEATHER_ERROR, SELECTED_UPDATE } from '../actions/weather'
 import { pad } from './helpers/dataSet'
 
 const defaultState = {
     dataFormat: 'json',
-    location: 'london,gb'
+    location: 'london,gb',
+    messages: []
 }
 
 const weather = (state = defaultState, action) => {
@@ -26,6 +27,12 @@ const weather = (state = defaultState, action) => {
                         name: action.forecast.city.name
                     }
                 }
+            }
+
+        case WEATHER_ERROR:
+            return {
+                ...state,
+                messages: [ action.error ]
             }
 
         case SELECTED_UPDATE:

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Select from '../components/Select'
 import { locations, formats } from '../data/selectBoxes'
 import Grid from '../components/Grid'
+import Messages from '../components/Messages'
 import { getForecast, updateSelected } from '../actions/weather'
 import api from '../data/api'
 
@@ -26,6 +27,7 @@ class WeatherContainer extends Component {
                 <button className="btn btn-success" onClick={this.props.fetchData}>
                     Get 5 day forecast
                 </button>
+                <Messages messages={this.props.messages} />
                 {this.props.forecast ?
                 <Grid
                     forecast={this.props.forecast.list}
@@ -39,12 +41,13 @@ class WeatherContainer extends Component {
 }
 
 const mapStateToProps = state => {
-    const { forecast, dataFormat, location } = state.weather
+    const { forecast, dataFormat, location, messages } = state.weather
 
     return {
         forecast,
         dataFormat,
-        location
+        location,
+        messages
     }
 }
 
