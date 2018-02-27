@@ -1,11 +1,13 @@
 import { WEATHER_REQUEST, WEATHER_SUCCESS, WEATHER_ERROR, SELECTED_UPDATE } from '../actions/weather'
-import { pad } from './helpers/dataSet'
+import { pad, applyMapping } from './helpers/dataSet'
 
 const defaultState = {
     dataFormat: 'json',
     location: 'london,gb',
     messages: []
 }
+
+const boundryFn = (value) => new Date(value.time).getHours() === 0
 
 const weather = (state = defaultState, action) => {
     switch (action.type) {
@@ -16,16 +18,18 @@ const weather = (state = defaultState, action) => {
             }
 
         case WEATHER_SUCCESS:
-
-            const boundryFn = (value) => new Date(value.dt_txt).getHours() === 0
-
             return {
                 ...state,
                 forecast: {
-                    list: pad(action.forecast.list, state.interval, boundryFn),
+                    list: pad(
+                        applyMapping(action.forecast.list, action.mapping[action.dataFormat]),
+                        state.interval,
+                        boundryFn
+                    ),
                     city: {
                         name: action.forecast.city.name
-                    }
+                    },
+                    dataFormat: action.dataFormat
                 }
             }
 

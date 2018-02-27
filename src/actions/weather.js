@@ -1,4 +1,5 @@
 import api from '../data/api'
+import { fetchData } from './helpers/data'
 
 export const WEATHER_REQUEST = 'WEATHER_REQUEST'
 export const weatherRequest = interval => {
@@ -9,10 +10,12 @@ export const weatherRequest = interval => {
 }
 
 export const WEATHER_SUCCESS = 'WEATHER_SUCCESS'
-export const weatherSuccess = forecast => {
+export const weatherSuccess = (forecast, dataFormat, mapping) => {
     return {
         type: WEATHER_SUCCESS,
-        forecast
+        forecast,
+        dataFormat,
+        mapping
     }
 }
 
@@ -34,24 +37,23 @@ export const updateSelected = selected => {
 
 const API_KEY = '56664e8f64055096a12f788307109538'
 
-const request = async(url) => {
-    const response = await fetch(url)
-    return await response.json()
-}
-
 export const getForecast = () => {
 
     return async(dispatch, getState) => {
 
         dispatch(weatherRequest(api.interval))
 
-        const { location } = getState().weather
+        const { location, dataFormat } = getState().weather
+
+        const params = {
+            xhr: { url: `${api.endpoint}?q=${location}&APPID=${API_KEY}` }
+        }
 
         try {
-            const success = await request(`${api.endpoint}?q=${location}&APPID=${API_KEY}`)
-            dispatch(weatherSuccess(success))
+            const forecast = await fetchData(dataFormat, params)
+            dispatch(weatherSuccess(forecast, dataFormat, {json: api.mapping, csv: null}))
         } catch (error) {
-            dispatch(weatherError({type: 'danger', text: 'Error with weather API request'}))
+            dispatch(weatherError({ type: 'danger', text: 'Error with weather API request' }))
         }
     }
 }
