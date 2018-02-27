@@ -28,9 +28,17 @@ export const pad = (list, interval, boundryFn) => {
  * @param {*} value 
  * @param {Function} testFn 
  */
-export const isBoundry = (value, testFn) => testFn(value)
+const isBoundry = (value, testFn) => testFn(value)
 
 /**
  * @param {Integer} length 
  */
 const nullArray = length => new Array(length).fill(null)
+
+/**
+ * @param {Array} data 
+ * @param {Function} mapping 
+ */
+export const applyMapping = (data, mapping) => {
+    return mapping ? data.map(mapping) : data
+}

@@ -32,7 +32,8 @@ class WeatherContainer extends Component {
                 <Grid
                     forecast={this.props.forecast.list}
                     location={this.props.forecast.city.name}
-                    columns={api.interval} 
+                    columns={api.interval}
+                    source={this.props.forecast.dataFormat}
                 />
                 : ''}
             </div>
