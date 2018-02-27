@@ -2,13 +2,11 @@
 
 ![home page](https://raw.githubusercontent.com/alexbowen/tandem-weather/master/application.png)
 
-This application uses the http://openweathermap.org/ API to display 3hourly weather infomation for a UK city for the next 5 days.
+This application uses the http://openweathermap.org/ API to display 3 hourly weather infomation for a UK city over the next 5 days.
 
 Seeing as the task requirements mentioned React specifically this application concentrates on the React/Redux side of things. Some basic styling is applied using bootstrap but I did not spend much time on that. The semantics of the markup probably leave a bit to be desired also!
 
 The application is a client side React application (no server side HTML construction) that uses Redux for state management.
-
-I spent 3-4 hours on developing this but in that time frame I did not get the time to implement the requirement of the CSV data source. I would be totally willing to discuss how this could be implemeted in any discussions.
 
 I used create-react-app (see below) for some initial boilerplate to save some time.
 
@@ -27,11 +25,11 @@ In development mode all actions and corresponding states created are logged in t
 
 ### Architecture
 
-The container/component react/redux pattern is used. Containers have their state mapped to the redux store and components are stateless. redux-thunk is used to manage asynchronous calls to the API. I would probably refine the container/componet architecture as i took some shortcuts here - the controls for selecting city/data source i would probably absract in a seperate container for instance.
+The container/component react/redux pattern is used. Containers have their state mapped to the redux store and components are stateless. redux-thunk is used to manage asynchronous calls to the API. I would probably refine the container/componet architecture as i took some shortcuts here - the controls for selecting city/data source I would probably absract in a seperate container for instance.
 
 ### Error handling
 
-Some basic error handling is added to the main API call that then displays an erro state to the user if there is a problem. Its a fairly crude implementation but just to demonstrate i have considred error handling.
+Some basic error handling displays an error message to the user if there is a problem and the `WEATHER_ERROR` action is called.
 
 ![home page](https://raw.githubusercontent.com/alexbowen/tandem-weather/master/error-state.png)
 
@@ -41,7 +39,7 @@ I would add a 'loading' state with an indicator to the content area area when re
 
 `npm test`
 
-I have included unit tests for the actions of an API call, and some of the helpers I have implemented. These are intende for demonsatration and coverage would need to be greater in a real life application.
+I have included unit tests for the actions of an API call, and some of the helpers I have implemented. These are intended for demonstration and coverage would need to be greater in a real life application.
 
 I have also included a demonstration of a simple component snapshot test.
 
@@ -51,9 +49,11 @@ Some examples of internal propType checks have been added, although these need t
 
 ### Considerations/TODO
 
+- ~~Implement CSV data source option.~~
 - As mentioned there is some very basic responsive styling. This kind of application is ideally suited to being a Progressive web application and this would greatly enhange the user experience on smaller devices/bad connections.
-- Would be nice to try out async/await in the redux API action.
-- The request to the API should really be made via some kind of proxy api server as there is an API key harcoded which would certainly be a more serious security consideration if API calls were made that access any kind of personal/sensitive data.
+- ~~Refactor error handling to call an error action. Messages should be stateless component that has data passed to it instead of a container with its own state.~~
+- ~~Would be nice to try out async/await in the redux API action.~~
+- The request to the API should really be made via some kind of proxy API server as there is an API key hardcoded which would certainly be a more serious security consideration if API calls were made that access any kind of personal/sensitive data.
 
 ### Production
 
